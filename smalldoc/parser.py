@@ -11,7 +11,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+"""
+Parser read your module then extract data from source code and your docstring to build a dict.
+"""
 import pydoc
 import inspect
 import sys
@@ -24,6 +26,14 @@ logger = logging.getLogger(__name__)
 
 
 def parse(working_path: str, module_name: str, show_private=False) -> dict:
+    """
+    Parse your code and  docstring then generate a dict with it.
+    :param working_path: The working directory to fetch your module
+    :param module_name: The name of the module you want to generate dict of your documentation
+    :param show_private: If True, parser will navigate through your private methode. At False by default.
+    :return: Dictionnary which contain metadata and doc.
+    :rtype dict
+    """
     logger.debug(f'loading path {working_path}')
     sys.path.append(working_path)
     try:
