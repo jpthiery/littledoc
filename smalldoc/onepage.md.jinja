@@ -1,0 +1,48 @@
+{% macro title(content, current_depth) -%}
+{% for n in range(0,current_depth) %}#{% endfor %}  {{ content }}
+{% endmacro %}
+{% macro render_function(function, current_depth) -%}
+{{ title(function.name,current_depth) }}
+```python
+{{ function.def }}
+```
+
+{{ function.doc }}
+{{ title('Arguments',current_depth+1) }}
+|Name|Type|Description|
+|----|----|-----------|
+{% for param in function.parameters if param.name != 'self' -%}
+| `{{ param.name -}}` | {{ param.type -}} | {{ param.doc }} |
+{% endfor -%}
+{% if function.return.type or function.return.doc -%}
+{{ title('Return',current_depth+1) }}
+{% if function.return.type -%}`{{ function.return.type }}` : {% endif -%} {{ function.return.doc }}
+{% endif %}
+{% endmacro -%}
+{% macro render_class(class,current_depth) -%}
+{{ title(class.name,current_depth) }}
+{{ class.doc }}
+
+{% for function in class.functions -%}
+{{ render_function(function,current_depth+1) }}
+{% endfor %}
+{% for nested_class in class.classes -%}
+{{ render_class(nested_class,current_depth+1) }}
+{% endfor -%}
+{% endmacro -%}
+{% macro render_module(module,current_depth) -%}
+{{ title(module.name,current_depth) }}
+{{ module.description }}
+
+{% for function in module.functions -%}
+{{ render_function(function,current_depth+1) }}
+{% endfor -%}
+{% for class in module.classes -%}
+{{ render_class(class,current_depth+1) }}
+{% endfor -%}
+{% for sub_module in module.modules -%}
+----
+{{ render_module(sub_module,current_depth+1) }}
+{% endfor -%}
+{% endmacro -%}
+{{ render_module(module,1) }}
