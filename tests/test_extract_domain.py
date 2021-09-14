@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# import json
 import logging
 import os
 
@@ -31,15 +32,10 @@ def test_extract_module_doc():
     result = parse(WORKING_DIR, MODULE_NAME)
 
     # Then
-    assert_dict_contain(
-        {
-            'name': 'fakemodule',
-            'description': 'A fake module ot our tests'
-        },
-        result
-        ,
-        'module domain'
-    )
+    assert 'name' in result
+    assert result['name'] == 'fakemodule'
+    assert 'description' in result
+    assert result['description'] == 'A fake module ot our tests'
 
 
 def test_should_extract_small_class_static_function_doc():
@@ -173,7 +169,7 @@ def test_should_extract_small_class():
     assert result['classes'][0]['name'] == 'ASmallClass'
     assert result['classes'][0]['doc'] == 'A small class'
     assert 'functions' in result['classes'][0]
-    assert len(result['classes'][0]['functions']) == 3
+    assert len(result['classes'][0]['functions']) == 2
     # logger.debug(json.dumps(result, indent=2))
 
 

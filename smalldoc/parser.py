@@ -158,4 +158,4 @@ def _parse_return_function(function_to_parse) -> dict:
 
 
 def _remove_first_and_last_newline(a_str: str) -> str:
-    return re.sub(r'\n+$', '', re.sub(r'^\n+$', '', a_str)) if a_str else ''
+    return re.sub(r'\n+$', '', re.sub(r'^\n+', '', a_str)) if a_str else ''
