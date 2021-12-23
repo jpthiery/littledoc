@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from smalldoc import parse, write
+from littledoc import parse, write
 
 logger = logging.getLogger(__name__)
 

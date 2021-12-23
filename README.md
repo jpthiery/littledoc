@@ -1,4 +1,4 @@
-Smalldoc is a small lib which allow to extract your Python documentation in an easy way.
+Littledoc is a small lib which allow to extract your Python documentation in an easy way.
 
 The following documentation of Smalldoc had been generate executing script [doc.py](doc.py)
 
