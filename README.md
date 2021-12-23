@@ -1,9 +1,9 @@
 Littledoc is a small lib which allow to extract your Python documentation in an easy way.
 
-The following documentation of Smalldoc had been generate executing script [doc.py](doc.py)
+The following documentation of Littledoc had been generate executing script [doc.py](doc.py)
 
 ---
-#  smalldoc
+#  littledoc
 
 Small module which allow you to extract your docstring documentation in the format of your choice.
 
