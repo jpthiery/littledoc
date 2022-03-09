@@ -2,6 +2,18 @@ Littledoc is a small lib which allow to extract your Python documentation in an 
 
 The following documentation of Littledoc had been generate executing script [doc.py](doc.py)
 
+## Howto use it
+
+### Setup
+```bash
+pip install littledoc
+```
+
+### Run
+```bash
+littledoc -w $(pwd) -m my_module -o docuemtation.md
+```
+
 ---
 #  littledoc
 
