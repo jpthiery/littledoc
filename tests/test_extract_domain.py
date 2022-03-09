@@ -16,7 +16,7 @@
 import logging
 import os
 
-from smalldoc import parse
+from littledoc import parse
 
 logger = logging.getLogger(__name__)
 
