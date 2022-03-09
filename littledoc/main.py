@@ -50,7 +50,7 @@ def param_missing(param_name, input_params):
     return False
 
 
-if __name__ == '__main__':
+def main():
     logger.debug("Parsing parameters")
     params = get_parameters()
     if params['log'] != "":
@@ -71,3 +71,7 @@ if __name__ == '__main__':
     with open(params['output_file'], 'a') as f:
         f.write(write(parse_result))
         f.flush()
+
+
+if __name__ == '__main__':
+    main()
